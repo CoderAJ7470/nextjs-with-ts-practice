@@ -1,0 +1,9 @@
+.products {
+ text-align: center;
+ font-size: 1.5rem;
+}
+
+.products-link {
+ text-decoration: none;
+ color: #0961ad;
+}

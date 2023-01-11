@@ -1,0 +1,10 @@
+.productDescriptionList {
+ display: flex;
+ margin: 2rem auto;
+ font-size: 1.5rem;
+}
+
+.productDescriptionList li {
+ list-style-type: none;
+ margin-bottom: 0.5rem;
+}

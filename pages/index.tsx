@@ -26,7 +26,7 @@ function Home({ products }: ProductsPackage) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<h1>Electronics and more!</h1>
-			<h4>Click the links below each image to see more details</h4>
+			<h4>Links below each image will open a new page/tab with more details</h4>
 			{products &&
 				products.map((product: Product) => {
 					return (

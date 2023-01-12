@@ -18,7 +18,7 @@ const ProductPage = ({ product }: ProductProperties) => {
 	return (
 		<>
 			<h2>Product details</h2>
-			<div className={productPageStyles.productDescriptionList}>
+			<div className={productPageStyles['product-description-list']}>
 				<Image
 					src={product.images && product.images[0]}
 					alt={product.description || 'image not available'}

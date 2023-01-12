@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-I am learning NextJS with TypeScript and this repo contains my practice code.
+I am learning NextJS with TypeScript and this repo contains my practice code. Testing a change here.
 
 ## Learn More
 

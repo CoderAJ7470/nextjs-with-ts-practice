@@ -1,23 +1,24 @@
-import { Product } from '../../types';
+import { Product, ProductsPackage } from '../../types';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+
+/**
+ * This file contains all of the code for the static version of the app
+ */
 
 // import the CSS module
 import productPageStyles from '../../styles/id.module.css';
-import { GetServerSideProps } from 'next';
 
-/**
- * This file contains the code that renders the server-side version of the app
- */
+interface ParamProperties {
+	params: {
+		id: string;
+	};
+}
 
 interface ProductProperties {
 	product: Product;
 }
 
 const ProductPage = ({ product }: ProductProperties) => {
-	const router = useRouter();
-
-	console.log(router.query);
 	return (
 		<>
 			<h2>Product details</h2>
@@ -47,16 +48,24 @@ const ProductPage = ({ product }: ProductProperties) => {
 	);
 };
 
-/**
- * Takes the context from the server, from which api data can be accessed (in
- * this case, we're accessing the product id and passing it to the url endpoint)
- * @param context - Server-rendered context
- * @returns - props from the server
- */
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	const response = await fetch(
-		`https://dummyjson.com/products/${context.query.id}`
-	);
+export const getStaticPaths = async () => {
+	const res = await fetch('https://dummyjson.com/products');
+	const results: ProductsPackage = await res.json();
+
+	return {
+		paths: results.products.map((product) => {
+			return {
+				params: {
+					id: String(product.id),
+				},
+			};
+		}),
+		fallback: false,
+	};
+};
+
+export const getStaticProps = async ({ params }: ParamProperties) => {
+	const response = await fetch(`https://dummyjson.com/products/${params.id}`);
 	const product = await response.json();
 
 	return {
